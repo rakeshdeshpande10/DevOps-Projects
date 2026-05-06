@@ -1,0 +1,42 @@
+services:
+  frontend:
+    # Build the React frontend from the local mern/frontend directory.
+    build: mern/frontend
+    # Expose the Vite development server on host port 5173.
+    ports:
+      - "5173:5173"
+    # Attach the frontend to the shared MERN network.
+    networks:
+      - mern
+  backend:
+    # Build the Express backend from the local mern/backend directory.
+    build: mern/backend
+    # Expose the backend API server on host port 5050.
+    ports:
+      - "5050:5050"
+    # Attach the backend to the shared MERN network.
+    networks:
+      - mern
+    # Ensure MongoDB starts before the backend service.
+    depends_on:
+      - mongo
+  mongo:
+    # Use the official MongoDB image from Docker Hub.
+    image: mongo:latest
+    # Expose MongoDB on host port 27017 for local development.
+    ports:
+      - "27017:27017"
+    # Attach MongoDB to the shared MERN network.
+    networks:
+      - mern
+    # Persist database data outside the container using a named volume.
+    volumes:
+      - mongo-data:/data/db
+
+networks:
+  mern:
+    driver: bridge
+
+volumes:
+  mongo-data:
+    driver: local

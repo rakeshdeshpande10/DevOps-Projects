@@ -43,7 +43,7 @@ jobs:
       - name: Run golangci-lint
         uses: golangci/golangci-lint-action@v6
         with:
-          version: v1.57.0
+          version: v1.64.2
           working-directory: ./go-web-app-devops-project
           go-version: 1.22
 

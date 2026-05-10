@@ -5,10 +5,9 @@ on:
     branches:
       - main
     paths:
-      - 'go-web-app-devops-project/**' # Include all files in the folder
-    paths-ignore:
-      - 'go-web-app-devops-project/README.md' # Exclude README.md files
-      - 'go-web-app-devops-project/helm/**' # Exclude Helm files
+      - 'go-web-app-devops-project/**'
+      - '!go-web-app-devops-project/README.md'
+      - '!go-web-app-devops-project/helm/**'
 
 jobs:
   

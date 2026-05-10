@@ -6,8 +6,9 @@ on:
       - main
     paths:
       - 'go-web-app-devops-project/**' # Include all files in the folder
-      - '!go-web-app-devops-project/README.md' # Exclude README.md files
-      - '!go-web-app-devops-project/helm/**' # Exclude Helm files
+    paths-ignore:
+      - 'go-web-app-devops-project/README.md' # Exclude README.md files
+      - 'go-web-app-devops-project/helm/**' # Exclude Helm files
 
 jobs:
   
@@ -87,6 +88,6 @@ jobs:
           git config --global user.email "rakeshdeshpande10@gmail.com"
           git config --global user.name "Rakesh Deshpande"
           git add go-web-app-devops-project/helm/go-web-app-chart/values.yaml
-          git commit -m "Update Helm chart with new image tag ${{github.run_id}}
+          git commit -m "Update Helm chart with new image tag ${{github.run_id}}"
           git push origin main
           
